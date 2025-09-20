@@ -1,0 +1,33 @@
+output_dir: "forensics_output"
+
+collection_toggles:
+  system_info: true
+  process_info: true
+  network_info: true
+  memory_dump: true
+  filesystem_artifacts: true
+  hash_critical_binaries: true
+  suid_sgid_files: true
+
+filesystem:
+  log_files_to_copy:
+    - /var/log/syslog
+    - /var/log/auth.log
+    - /var/log/secure
+    - /var/log/messages
+    - /var/log/wtmp
+    - /var/log/btmp
+  
+  shell_history_files:
+    - ".bash_history"
+    - ".zsh_history"
+    - ".history"
+
+hashing:
+  directories_to_hash:
+    - /bin
+    - /sbin
+    - /usr/bin
+    - /usr/sbin
+    - /tmp
+    - /var/tmp
