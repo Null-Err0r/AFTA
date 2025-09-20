@@ -243,6 +243,7 @@ AFTA collects a wide range of critical data:
 ## Contributing
 
 از مشارکت شما در این پروژه استقبال می‌شود.
+
 Contributions to this project are welcome.
 
 ## 📜 لایسنس
