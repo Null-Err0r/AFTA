@@ -85,7 +85,7 @@ Setting up AFTA is very simple. You only need **Python 3.6+** and **root** acces
 **1. Clone the repository:**
 
 ```bash
-git clone https://github.com/YourUsername/AFTA.git
+git clone https://github.com/Null-Err0r/AFTA.git
 ```
 
 **۲. ورود به دایرکتوری پروژه:**
