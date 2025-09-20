@@ -14,9 +14,11 @@
 ![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)
 
 یک ابزار قدرتمند، سبک و سریع برای فارنزیک زنده (Live Forensics) در سیستم‌عامل‌های لینوکس است.
+
 is a powerful, lightweight, and fast tool for live forensics on Linux operating systems.
 
 این اسکریپت به تحلیلگران امنیت و تیم‌های پاسخ به حادثه (IR) کمک می‌کند تا در کوتاه‌ترین زمان ممکن، داده‌های فرّار و آرتیفکت‌های حیاتی را از یک سیستم در حال کار جمع‌آوری کرده و برای تحلیل‌های بعدی ذخیره نمایند.
+
 This script helps security analysts and Incident Response (IR) teams to collect volatile data and critical artifacts from a live system as quickly as possible for subsequent analysis.
 
 ## هدف پروژه
@@ -24,12 +26,15 @@ This script helps security analysts and Incident Response (IR) teams to collect 
 ## Project Goal
 
 در شرایط پاسخ به حادثه، سرعت و دقت در جمع‌آوری شواهد اولیه حرف اول را می‌زند.
+
 In an incident response scenario, speed and accuracy in collecting initial evidence are paramount.
 
  این ابزار فرآیند را خودکار کرده و با ارائه یک خروجی استاندارد و جامع، ریسک خطای انسانی و از دست رفتن داده‌های حیاتی را به حداقل می‌رساند.
+ 
 This tool automates this process, minimizing the risk of human error and the loss of critical data by providing a standardized and comprehensive output.
 
 این ابزار به عنوان یک اسکریپت triage عمل کرده و یک تصویر کلی از وضعیت سیستم در لحظه وقوع حادثه ارائه می‌دهد.
+
 This tool acts as a triage script, providing a snapshot of the system's state at the moment of the incident.
 
 -----
@@ -73,6 +78,7 @@ This tool acts as a triage script, providing a snapshot of the system's state at
 ## Installation & Setup
 
 راه‌اندازی AFTA بسیار ساده است. تنها به **+ Python 3.6 ** و دسترسی **root** روی سیستم هدف نیاز دارید.
+
 Setting up AFTA is very simple. You only need **Python 3.6+** and **root** access on the target system.
 
 **۱. کلون کردن ریپازیتوری:**
@@ -90,6 +96,7 @@ cd AFTA
 ```
 
 اسکریپت به صورت خودکار پیش‌نیازهای پایتون (`requests` و `PyYAML`) را با استفاده از فایل `requirements.txt` نصب خواهد کرد.
+
 The script will automatically install the Python prerequisites (`requests` and `PyYAML`) using the `requirements.txt` file.
 
 -----
@@ -99,6 +106,7 @@ The script will automatically install the Python prerequisites (`requests` and `
 ## Usage
 
 تمام عملیات از طریق فایل اصلی اسکریپت و با دسترسی `root` انجام می‌شود.
+
 All operations are performed via the main script file with `root` access.
 
 ```bash
@@ -106,6 +114,7 @@ sudo python3 afta.py
 ```
 
 پس از اجرای دستور بالا، اسکریپت:
+
 After running the command above, the script will:
 
 1.  پیش‌نیازها را بررسی و نصب می‌کند.
@@ -129,6 +138,7 @@ After running the command above, the script will:
 ### Configuration (`config.yaml`)
 
 قلب تپنده AFTA فایل `config.yaml` است. شما می‌توانید با ویرایش این فایل، دقیقاً مشخص کنید کدام داده‌ها جمع‌آوری شوند.
+
 The heart of AFTA is the `config.yaml` file. By editing this file, you can specify exactly which data should be collected.
 
 ```yaml
@@ -143,6 +153,7 @@ collection_toggles:
 ```
 
 برای غیرفعال کردن هر بخش، کافیست مقدار آن را به `false` تغییر دهید.
+
 To disable any section, simply change its value to `false`.
 
 -----
@@ -152,6 +163,7 @@ To disable any section, simply change its value to `false`.
 ## Output Structure
 
 پس از اتمام کار، یک فایل `.zip` دریافت خواهید کرد که ساختار داخلی آن به شکل زیر است:
+
 After completion, you will receive a `.zip` file with the following internal structure:
 
 ```
@@ -179,6 +191,7 @@ forensics_output_hostname_2025-09-20_11-30-00.zip
 ## Collected Data
 
 AFTA طیف وسیعی از داده‌های حیاتی را جمع‌آوری می‌کند:
+
 AFTA collects a wide range of critical data:
 
   * **اطلاعات سیستم:** نام هاست، مشخصات سیستم‌عامل، معماری، آپ‌تایم، ماژول‌های کرنل بارگذاری شده.
@@ -202,10 +215,13 @@ AFTA collects a wide range of critical data:
   * **Filesystem Artifacts:**
 
       * لاگ‌های مهم سیستمی (`/var/log/...`).
+      
       * Important system logs (`/var/log/...`).
       * تاریخچه دستورات Shell برای تمام کاربران (`.bash_history`, `.zsh_history`, ...).
+      
       * Shell history for all users (`.bash_history`, `.zsh_history`, ...).
       * کلیدهای `authorized_keys` کاربران برای بررسی دسترسی‌های SSH.
+      
       * Users' `authorized_keys` files for auditing SSH access.
 
   * **تحلیل‌های امنیتی:**
@@ -213,8 +229,11 @@ AFTA collects a wide range of critical data:
   * **Security Analyses:**
 
       * لیست فایل‌های با بیت SUID/SGID برای شناسایی راه‌های بالقوه افزایش دسترسی.
+      
       * A list of files with SUID/SGID bits set to identify potential privilege escalation paths.
+      
       * هش SHA256 از باینری‌های موجود در مسیرهای سیستمی مهم برای مقایسه با نمونه‌های سالم (Hashing).
+      
       * SHA256 hashes of binaries in critical system paths for comparison against known-good samples (Hashing).
 
 -----
@@ -231,6 +250,7 @@ Contributions to this project are welcome.
 ## 📜 License
 
 این پروژه تحت لایسنس MIT منتشر شده است. برای اطلاعات بیشتر فایل `LICENSE` را مطالعه کنید.
+
 This project is released under the MIT License. See the `LICENSE` file for more details.
 
 ![Repo Badge](https://visitor-badge.laobi.icu/badge?page_id=null-err0r.AFTA) 
