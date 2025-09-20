@@ -167,8 +167,8 @@ To disable any section, simply change its value to `false`.
 After completion, you will receive a `.zip` file with the following internal structure:
 
 ```
-forensics_output_hostname_2025-09-20_11-30-00.zip
-└── forensics_output_hostname_2025-09-20_11-30-00/
+forensics_output_hostname_202xxxxxx.zip
+└── forensics_output_hostname_202xxxxx/
     ├── report.json                 # خروجی اصلی شامل اطلاعات سیستم، شبکه، پردازش‌ها و...
                                     # Main output including system, network, process info, etc.
     ├── forensics_run.log           # لاگ کامل اجرای اسکریپت
